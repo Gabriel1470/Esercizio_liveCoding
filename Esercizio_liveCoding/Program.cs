@@ -5,6 +5,7 @@
 
 //Come primo step andiamo a definire la classe Articolo con le sue proprietà
 
+using System.Text.RegularExpressions;
 using Esercizio_liveCoding;
 using Esercizio_liveCoding.Exceptions;
 using Esercizio_liveCoding.Model;
@@ -12,7 +13,8 @@ using Esercizio_liveCoding.Pages;
 
 var _supermercato = new Supermercato();
 Stack<Articolo> carrello = new Stack<Articolo>();
-
+_supermercato.GetArticoli();
+return ;
 while (true)
 {
     try
@@ -26,7 +28,12 @@ while (true)
 
         if (input == "1")
         {
-            _supermercato.GetArticoli().ForEach(Console.WriteLine);
+            _supermercato.GetArticoli().ForEach( group => { 
+                Console.WriteLine(group.Key);
+                group.ToList().ForEach(Console.WriteLine);
+               
+             } );
+            
         }
         else if (input == "2")
         {

@@ -17,9 +17,11 @@ namespace Esercizio_liveCoding
         };
 
 
-        public List<Articolo> GetArticoli()
+        public List<IGrouping<string, Articolo>> GetArticoli()
         {
-            return listArt;
+           var groups = listArt.GroupBy(x => x.Categoria);
+          
+          return groups.ToList();
         }
 
         public List<Articolo> FilterByName(string? input)
